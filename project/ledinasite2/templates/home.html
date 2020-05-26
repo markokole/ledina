@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Registracija točk in izbira jezika</h3>
+<form action="{% url 'login' %}">
+  {% if user.is_authenticated %}
+    Hi {{ user.username }}!
+    <p><a href="{% url 'logout' %}">Odjava</a></p>
+  {% else %}
+  
+  <button type="submit">Prijava</button>
+</form>
+{% endif %}
+{% endblock %}

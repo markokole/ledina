@@ -1,0 +1,31 @@
+version: '3'
+services:
+  ledina:
+    build: .
+    image: "markokole/ledina"
+    ports:
+      - "8000:8000"
+    env_file:
+      - 'variables.env'
+    volumes:
+      - C:\marko\GitHub\ledina\project:/project
+    command: /bin/sh create_database.sh
+    depends_on: 
+      - postgres
+  jupyter:
+    image: "markokole/ledina"
+    ports:
+      - "8888:8888"
+    env_file:
+      - 'variables.env'
+    volumes:
+      - C:\marko\GitHub\ledina\project:/project
+    command: jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root --NotebookApp.password='sha1:ab36ceee14f9:8c9605ada8fa65cb096f8f6ca63822560cd36fb7'
+    depends_on: 
+      - postgres
+  postgres:
+    image: "postgres:latest"
+    ports:
+      - "5432:5432"
+    env_file:
+      - 'variables.env'

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  <h3>{{ user.username }}, naslednji podatki so se shranili:</h3>
+  <form method="post">{% csrf_token %}
+  
+
+    <label for="tocke">Točke: </label>
+    <input id="izberi" type="text" name="tocke" value="{{ form.tocke }}" readonly>
+    <label for="tocke">Jezik 1: </label>
+    <input id="izberi" type="text" name="jezik1" value="{{ form.jezik1 }}" readonly>
+    <label for="tocke">Jezik 2: </label>
+    <input id="izberi" type="text" name="jezik1" value="{{ form.jezik2 }}" readonly>
+    <label for="tocke">Jezik 3: </label>
+    <input id="izberi" type="text" name="jezik1" value="{{ form.jezik3 }}" readonly>
+    <label for="tocke">Jezik 4: </label>
+    <input id="izberi" type="text" name="jezik1" value="{{ form.jezik4 }}" readonly>
+    <label for="tocke">Jezik 5: </label>
+    <input id="izberi" type="text" name="jezik1" value="{{ form.jezik5 }}" readonly>
+    <label for="tocke">Jezik 6: </label>
+    <input id="izberi" type="text" name="jezik1" value="{{ form.jezik6 }}" readonly>
+</form>
+  <br>
+  <a href="{% url 'logout' %}">Odjava</a>
+
+{% else %}
+  <p>Kandidat ni prijavljen. Prijavi se</p>
+  <a href="{% url 'login' %}">Prijava</a>
+{% endif %}
+  
+{% endblock %}
