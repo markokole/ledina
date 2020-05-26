@@ -1,11 +1,16 @@
 # Pilot za vpis kandidatov za sprejem na srednjo solo
 
 Postgres baza za shranjevanje podatkov
+
 Django za spletno stran in manipulacijo s podatki
+
+Build Docker
 
 ```bash
 docker build . --tag=markokole/ledina
 ```
+
+Push Docker
 
 ```bash
 docker push markokole/ledina:latest
